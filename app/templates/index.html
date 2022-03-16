@@ -1,6 +1,8 @@
 {% extends "base.html"%}
 
 {% block content %}
+<image class="read mt-5" src="{{url_for('static',filename = 'images/read.png')}}" ></image>
 <div class="text-center mt-5">
-    <h1>{{ users.username }}</h1>
+    <h1 class="word text-center">{{ users.username }}</h1>
+    
 {% endblock%}
