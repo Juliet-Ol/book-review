@@ -1,12 +1,13 @@
 {% extends "base.html"%}
 
 {% block content %}
-<image class="read mt-5" src="{{url_for('static',filename = 'images/read.png')}}" ></image>
+<image class="read mt-5" src="{{url_for('static',filename = 'images/read.png')}}"></image>
 <div class="text-center mt-5">
     <h1 class="word text-center">{{ users.username }}</h1>
-     <input type="submit" value="Create an account">
+    <!-- <input class="submission" type="submit" value="Create an account"> -->
+    <a class="submission" href="{{url_for('main.index')}}">Create an account</a>
 
 
 
 
-{% endblock%}
+    {% endblock%}

@@ -8,3 +8,10 @@
     font-size: 25px;
     font-family: Raleway;
 }
+
+.submission{
+    height: 50px;
+    width: 200px;
+    border-radius:35px;
+    background-color:#555B6E;
+}
