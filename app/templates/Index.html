@@ -1,0 +1,24 @@
+{% extends "base.html"%}
+
+
+{% block content %}
+<div class="text-center mt-5">
+    <h1>Hello, {{ user.username }}!</h1>
+    <h1>{{ users.usernames }}</h1>
+    <p>{{show.shows}}</p>
+    <a href="{{url_for('main.SignIn')}}">Sign In</a>
+    <hr>
+    {% with messages = get_flashed_messages()%}
+    {%if messages%}
+    <ul class="dis">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <!-- <a href="{{url_for('main.logout')}}">Logout</a><br>
+    <a href="{{ url_for('main.user', username=current_user.username) }}">Posts</a> -->
+</div>
+
+{% endblock%}
