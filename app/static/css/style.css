@@ -9,13 +9,12 @@
   font-family: Raleway;
 }
 
-.tn {
+#tn {
   height: 50px;
   width: 200px;
   border-radius: 35px;
-  color: #555b6e;
   border: none;
   font-family: Raleway;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: semi-bold;
 }

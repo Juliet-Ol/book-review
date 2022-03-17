@@ -3,8 +3,11 @@
 {% block content %}
 <image class="read mt-5" src="{{url_for('static',filename = 'images/read.png')}}"></image>
 <div class="text-center mt-5">
-    <h1 class="word text-center">{{ users.username }}</h1>
-    <button class="tn" type="button">Create an account</button>
+    <h1 class="word text-center">{{ user.username }}</h1>
+     <button id="tn" type="button" class="btn btn-dark">Create an Account</button>
+    <p style="font-family:Raleway;">{{ users.usersname}}</p>
+    <button type="button" class="btn btn-link" style="font-family:Raleway;">Login</button>
+   
 
 
 
