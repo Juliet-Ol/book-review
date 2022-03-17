@@ -1,17 +1,21 @@
-.read{
-    height: 400px;
-    width: 400px;
-    margin-left: 550px;
+.read {
+  height: 400px;
+  width: 400px;
+  margin-left: 550px;
 }
 
-.word{
-    font-size: 25px;
-    font-family: Raleway;
+.word {
+  font-size: 25px;
+  font-family: Raleway;
 }
 
-.submission{
-    height: 50px;
-    width: 200px;
-    border-radius:35px;
-    background-color:#555B6E;
+.tn {
+  height: 50px;
+  width: 200px;
+  border-radius: 35px;
+  color: #555b6e;
+  border: none;
+  font-family: Raleway;
+  font-size: 25px;
+  font-weight: semi-bold;
 }
