@@ -4,8 +4,9 @@
 <image class="read mt-5" src="{{url_for('static',filename = 'images/read.png')}}"></image>
 <div class="text-center mt-5">
     <h1 class="word text-center">{{ user.username }}</h1>
-     <button id="tn" type="button" class="btn btn-dark">Create an Account</button>
+    <a href="{{url_for('main.register')}}" style="font-family:Raleway; font-size:20px;">register</a>
     <p style="font-family:Raleway; font-size:25px;">{{ users.usersname}}</p>
-    <button type="button" class="btn btn-link" style="font-family:Raleway; font-size:20px;">Login</button>
-   
+    <a href="{{url_for('main.login')}}" style="font-family:Raleway; font-size:20px;">Login</a>
+
+
     {% endblock%}
