@@ -1,5 +1,6 @@
-class BookZ:
-
+from urllib import response
+from flask_login import UserMixin
+class Book:
     def __init__(self, id,title,author,publisher,description):
         self.id = id
         self.title = title
@@ -31,3 +32,8 @@ class Review:
 
         return response        
 
+
+
+
+    def __repr__(self):
+        return '<User {}>'.format(self.username)

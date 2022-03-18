@@ -1,28 +1,31 @@
 from . import main
 from flask import render_template,flash,redirect,url_for
 from  .forms import LoginForm,RegistrationForm
-from app import request
-from app.models import User
- 
+
+
 @main.route('/')
 @main.route('/index')
 def index():
-    user = {'username': 'Hey there Get to see and review your top favorite books at the comfort of your couch'}
-    users = {'usersname':'Already have an account ?'}
-    return render_template('index.html',user =user,users=users)
+    word = {'username': 'Hey there Get to see and review your top favorite books at the comfort of your couch'}
+    words = {'usersname':'Already have an account ?'}
+    return render_template('index.html',word =word,words=words)
 
-@main.route('/register',methods=['GET','POST'])
+@main.route('/register')
 def register():
     form = RegistrationForm()
-    if request.method == 'POST' and form.validate():
-        user = User(form.username.data,form.email.data,form.password.data)
-        db_session.add(user)
-        flash('thanks for registering')
-        return redirect(url_for('login'))
     return render_template('register.html',title='Create your account',form=form)
 
 @main.route('/login')
 def login():
     form = LoginForm()
-    
-    return render_template('login.html', title='Login',form=form)        
+    if form.validate_on_submit():
+        flash('Login requested for user {},remember_me: {}'.format(form.user.username, form.remember_me.data))
+        return redirect('/home')
+    return render_template('login.html', title='Login',form=form)   
+
+@main.route('/home')    
+def home ():
+    wor = {'names':'Grab yourself some nice cup of coffee as we nit pick'}
+    return render_template('home.html',wor=wor)  
+
+     
