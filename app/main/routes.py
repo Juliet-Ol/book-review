@@ -14,16 +14,16 @@ def index():
     words = {'usersname':'Already have an account ?'}
     return render_template('index.html',word =word,words=words)
 
-@main.route('/register')
+@main.route('/register',methods=['POST','GET'])
 def register():
     form = RegistrationForm()
     return render_template('register.html',title='Create your account',form=form)
 
-@main.route('/login')
+@main.route('/login',methods=['POST','GET'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        flash('Login requested for user {},remember_me: {}'.format(form.user.username, form.remember_me.data))
+        flash('Login requested for user {},remember_me: {}'.format(form.username.data, form.remember_me.data))
         return redirect('/home')
     return render_template('login.html', title='Login',form=form)   
 
