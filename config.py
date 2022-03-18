@@ -1,19 +1,28 @@
 import os
 
-class Config:
-    # BOOK_API_BASE_URL ='https://api.themoviedb.org/3/movie/{}?api_key={}'
-    BOOK_API_KEY = os.environ.get('BOOK_API_KEY')
+class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    BOOKS_URL = 'https://www.googleapis.com/books/v1/volumes?q=isbn'
+
+    # Database
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/bookreview'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
+    @staticmethod
+    def init_app(app):
+        pass
+
+
 class ProdConfig(Config):
-    pass
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+
 
 class DevConfig(Config):
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/bookreview'
     DEBUG = True
 
+
 config_options = {
-    'development':DevConfig,
-    'poduction':ProdConfig
-}    
+    'development': DevConfig,
+    'production': ProdConfig
+}

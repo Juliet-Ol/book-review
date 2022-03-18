@@ -1,39 +1,26 @@
-from urllib import response
+from . import login_manager
+from app import db
 from flask_login import UserMixin
+
+
 class Book:
-    def __init__(self, id,title,author,publisher,description):
+    def __init__(self, id, title, author, publisher, description):
         self.id = id
         self.title = title
         self.author = author
         self.publisher = publisher
         self.description = description
 
-class Review:
-    all_reviews = []
-    def __init__(self,book_id,title,image_url,review):
-        self.book_id = book_id
-        self.title = title
-        self.image_url = image_url
-        self.review = review
 
-    def save_review(self):
-        Review.all_reviews.append(self)  
-
-    @classmethod  
-    def clear_reviews(cls):
-        Review.all_reviews.clear()
-
-    @classmethod
-    def get_reviews(cls,id):  
-        response =[]  
-        for review in cls.all_reviews:
-            if review.id == id:
-                response.append(review)
-
-        return response        
-
-
-
+class User(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(64), index=True, unique=True)
+    email = db.Column(db.String(120), index=True, unique=True)
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
+
+
+@login_manager.user_loader
+def load_user(id):
+    return User.query.get(int(id))

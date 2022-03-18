@@ -1,8 +1,8 @@
-from app import app
+import requests
 import urllib.request
 import json
-from app import Book
-Book = Book.book
+from app.models import Book
+book = Book
 random_books_url = 'https://www.googleapis.com/books/v1/volumes?q=isbn'
 
 

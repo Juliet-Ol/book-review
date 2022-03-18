@@ -1,11 +1,15 @@
 from . import main
 from flask import render_template,flash,redirect,url_for
+from flask_login import logout_user
+from app.models import User
 from  .forms import LoginForm,RegistrationForm
+from .. requests import get_random_books
 
 
 @main.route('/')
 @main.route('/index')
 def index():
+    book = get_random_books()
     word = {'username': 'Hey there Get to see and review your top favorite books at the comfort of your couch'}
     words = {'usersname':'Already have an account ?'}
     return render_template('index.html',word =word,words=words)
@@ -27,5 +31,10 @@ def login():
 def home ():
     wor = {'names':'Grab yourself some nice cup of coffee as we nit pick'}
     return render_template('home.html',wor=wor)  
+
+@main.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('main.index'))
 
      
