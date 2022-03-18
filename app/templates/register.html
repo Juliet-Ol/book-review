@@ -13,26 +13,37 @@
 
 <body style="background-color:#FFEFBA;">
     <h1 class="text-center mt-5" style="font-family:Raleway">Create your account</h1>
-    <form class="pepe" style="font-family:Raleway">
-        <div class="form-group1">
-            <label for="exampleInputEmail1">First Name</label>
-            <input type="text" class="form-control" placeholder="First Name">
-        </div>
-        <div class="form-group1">
-            <label for="exampleInputEmail1">Second Name</label>
-            <input type="text" class="form-control" placeholder="Second Name">
-        </div>
-        <div class="form-group1">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <div class="form-group1">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div>
-        <button style="font-family:Raleway; font-size:20px; height:50px; width:200px; border-radius:35px; font-weight:semi-bold; margin-left:290px;" type="submit" class="btn btn-primary">Submit</button>
+    <form action="" method="post" style="font-family:Raleway; margin-left:600px;">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email(size=32) }}<br>
+            {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}<br>
+            {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password2.label }}<br>
+            {{ form.password2(size=32) }}<br>
+            {% for error in form.password2.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
     </form>
 </body>
 
