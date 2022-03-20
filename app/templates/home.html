@@ -11,9 +11,29 @@
     <title>Document</title>
 </head>
 
-<body style="background-color:#FFEFBA;">
-    <!-- <a href="{{url_for('main.login')}}" style="font-family:Raleway; font-size:20px;">Login</a> -->
+<body style="background-color:#FFEFBA;"> {%if current_user.is_authenticated%}
+    <a href="{{url_for('main.logout')}}" style="font-family:Raleway; font-size:20px;">Logout</a>
+
+    {%endif%}
     <p class="text-center mt-5" style="font-family:Raleway; font-size:25px;">{{ wor.names}}</p>
+    <ul>
+        {%for book in books%}
+        <li style="list-style:none;">
+            <h1>{{book.volumeInfo.title}}</h1>
+            <p>{{book.volumeInfo.description}}</p>
+            <div>
+                <img src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="">
+            </div>
+            <small>{{book.volumeInfo.authors}}</small>
+            <p>{{book.saleInfo.country}}</p>
+            <p>{{book.volumeInfo.language}}</p>
+            <p>{{book.volumeInfo.pageCount}}</p>
+            <p>{{book.volumeInfo.publishedDate}}</p>
+        </li>
+        {%endfor%}
+
+
+    </ul>
 </body>
 
 </html>

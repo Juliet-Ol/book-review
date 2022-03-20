@@ -13,12 +13,12 @@
 
 <body style="background-color:#FFEFBA;">
     <h1 class="text-center mt-5" style="font-family:Raleway; margin-right:100px;">Login</h1>
-
+   
     <form action="" method="post" novalidate style="font-family:Raleway; margin-left:600px;">
         {{ form.hidden_tag() }}
         <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}
+            {{ form.email.label }}<br>
+            {{ form.email(size=32) }}
         </p>
         <p>
             {{ form.password.label }}<br>
