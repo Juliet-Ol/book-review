@@ -12,28 +12,35 @@
 </head>
 
 <body style="background-color:#FFEFBA;"> {%if current_user.is_authenticated%}
-    <a href="{{url_for('main.logout')}}" style="font-family:Raleway; font-size:20px;">Logout</a>
+    <a href="{{url_for('main.logout')}}"
+        style="font-family:Raleway; font-size:20px;float:right;margin-right:40px;">Logout</a>
 
     {%endif%}
     <p class="text-center mt-5" style="font-family:Raleway; font-size:25px;">{{ wor.names}}</p>
-    <ul>
-        {%for book in books%}
-        <li style="list-style:none;">
-            <h1>{{book.volumeInfo.title}}</h1>
-            <p>{{book.volumeInfo.description}}</p>
-            <div>
-                <img src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="">
+    {%for book in books%}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-5">
+
+                <div class="card" style="width: 18rem;">
+                    <img src="{{book.volumeInfo.imageLinks.thumbnail}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{book.volumeInfo.title}}</h5>
+                        <p class="card-text">{{book.volumeInfo.description}}</p>
+                        <small>{{book.volumeInfo.authors}}</small>
+                        <p>{{book.saleInfo.country}}</p>
+                        <p>{{book.volumeInfo.language}}</p>
+                    </div>
+
+                </div>
             </div>
-            <small>{{book.volumeInfo.authors}}</small>
-            <p>{{book.saleInfo.country}}</p>
-            <p>{{book.volumeInfo.language}}</p>
-            <p>{{book.volumeInfo.pageCount}}</p>
-            <p>{{book.volumeInfo.publishedDate}}</p>
-        </li>
-        {%endfor%}
+        </div>
+
+    </div>
 
 
-    </ul>
+    {%endfor%}
+
 </body>
 
 </html>
